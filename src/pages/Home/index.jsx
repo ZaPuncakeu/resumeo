@@ -16,6 +16,7 @@ export default function Home()
     }
 
     function deleteResume(key) {
+        if(!window.confirm(text.delete_msg)) return;
         delete recent[key];
         window.localStorage.setItem('resumeo-data', JSON.stringify(recent));
         window.location.reload();
