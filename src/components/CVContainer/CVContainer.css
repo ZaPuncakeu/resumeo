@@ -1,0 +1,41 @@
+#cv-container 
+{
+    width: 60%;
+    height: 100vh;
+    overflow: scroll;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    right: 0;
+    top: 0;
+    background-color: rgb(217, 217, 217);
+}
+
+#cv-container > div {
+    width: 210mm;
+    height: 297mm;
+    zoom: 50%;
+}
+
+#cv-container::-webkit-scrollbar {
+    opacity: 0;
+    width: 0;
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    #cv-container > div, #cv-container > div * {
+        visibility: visible;
+    }
+
+    #cv-container > div {
+        position: fixed;
+        left: 0;
+        top: 0;
+        zoom: normal;
+    }
+}

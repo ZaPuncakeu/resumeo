@@ -1,0 +1,31 @@
+{
+    "name": "",
+    "id": "",
+    "model": 0,
+    "en": {
+        "picture": "https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg",
+        "fullname": "",
+        "title": "",
+        "email": "",
+        "phone": "",
+        "address": "",
+        "description": "",
+        "work_experience": [],
+        "education": [], 
+        "skills": [],
+        "langs": []
+    },
+    "fr": {
+        "picture": "https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg",
+        "fullname": "",
+        "title": "",
+        "email": "",
+        "phone": "",
+        "address": "",
+        "description": "",
+        "work_experience": [],
+        "education": [], 
+        "skills": [],
+        "langs": []
+    }
+}

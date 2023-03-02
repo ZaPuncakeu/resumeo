@@ -1,0 +1,156 @@
+#model1 
+{
+    background-color: white;
+    display: flex;
+}
+
+#model1 .profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: solid white 5px;
+    box-sizing: border-box;
+    margin: auto;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    top: 113px;
+}
+
+#model1 .left-side {
+    width: 70mm;
+    height: 100%;
+    background-color: blue;
+    box-sizing: border-box;
+}
+
+#model1 .segement-1 {
+    width: 100%;
+    height: 50mm;
+    background-color: rgb(126, 126, 126);
+    border-bottom: none;
+    box-sizing: border-box;
+}
+
+#model1 .segement-2 {
+    width: 100%;
+    height: 247mm;
+    background-color: #293036;
+    border-top: solid white 5px;
+    box-sizing: border-box;
+    padding: 15px;
+}
+
+#model1 .fullname 
+{
+    margin-top: 70px;
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+    font-weight: 200;
+}
+
+#model1 .fullname > b {
+    font-weight: bolder;
+}
+
+#model1 .skills-element {
+    margin-top: 10px;
+}
+
+#model1 .title 
+{
+    margin-top: 2px;
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+    font-weight: 200;
+    font-size: small;
+}
+
+#model1 .left-side > .segement-2 > div > h3 
+{
+    margin-top: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+    font-size: medium;
+}
+
+#model1 .left-side > .segement-2 > div > div * {
+    color: white;
+    font-size: small;
+    text-decoration: none;
+}
+
+#model1 .left-side > .segement-2 .element-level > div {
+    display: flex;
+    justify-content: space-between;
+}
+
+#model1 .cv-body {
+    width: 140mm;
+}
+
+#model1 .cv-body section {
+    padding-top: 25px;
+    padding-left: 25px;
+    padding-right: 25px
+} 
+
+#model1 .cv-body section .section-title {
+    display: flex;
+    align-items: center;
+    color: #293036;
+    border-bottom: solid #293036 2px;
+    padding: 15px 0;
+}
+
+#model1 .cv-body section .variable-content > div {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 15px;
+}
+
+#model1 .cv-body section .variable-content .title-date {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#model1 .cv-body section .variable-content .title-date > h2 {
+    font-size: 20px;
+}
+
+#model1 .cv-body section .section-title .fa {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #293036;
+    color: white;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+#model1 .cv-body section .profile {
+    margin-top: 15px;
+}
+
+#model1 .cv-body section .variable-content .place-name {
+    color: #5491c6;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 13px;
+}
+
+#model1 .cv-body section .variable-content .place-name {
+    color: #5491c6;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 14px;
+}
+
+#model1 .cv-body p {
+    font-size: 14px;
+}
