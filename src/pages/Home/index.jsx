@@ -15,6 +15,12 @@ export default function Home()
         navigate(`/resume/${v4()}`);
     }
 
+    function deleteResume(key) {
+        delete recent[key];
+        window.localStorage.setItem('resumeo-data', JSON.stringify(recent));
+        window.location.reload();
+    }
+
     return(
         <div id="home">
             <h1>Resumeo</h1>
@@ -40,8 +46,11 @@ export default function Home()
                                     <br />
                                     <div className="btn-model">
                                         <Link to={`/resume/${key}`} style={{textDecoration: 'none'}}>
-                                            <Button>{text.select}</Button>
+                                            <Button variant="outlined">{text.select}</Button>
                                         </Link>
+                                        &nbsp;&nbsp;
+                                        <Button variant="outlined" color="error" onClick={e => deleteResume(key)}>{text.delete}</Button>
+                                        
                                     </div>
                                 </div>
                             )
