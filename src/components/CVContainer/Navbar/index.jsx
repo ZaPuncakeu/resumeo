@@ -21,8 +21,8 @@ export default function Navbar()
     
     const dispatch = useDispatch();
     const { id } = useParams();
-    const data = useSelector(state => state.resume.data);
-
+    const {data, historyStack, newStack} = useSelector(state => state.resume);
+    console.log(data, historyStack, newStack)
     function download()
     {
         downloadPDF(data[id].name, lang);
@@ -51,17 +51,29 @@ export default function Navbar()
 
             <div className='right-side'>
                 <div className='undo-redo'>
-                    <IconButton onClick={e => dispatch(undo({
-                        lang,
-                        id
-                    }))} aria-label="undo" className='undo'>
+                    <IconButton 
+                        onClick={e => dispatch(undo({
+                            lang,
+                            id
+                        }))} 
+                        aria-label="undo" 
+                        className='undo'
+                        disabled={historyStack[lang].length === 0}
+                        style={{color: historyStack[lang].length === 0 ? 'gray': 'white'}}
+                    >
                         <UndoIcon />
                     </IconButton>
                     
-                    <IconButton onClick={e => dispatch(redo({
-                        lang, 
-                        id
-                    }))} aria-label="redo" className='redo'>
+                    <IconButton 
+                        onClick={e => dispatch(redo({
+                            lang, 
+                            id
+                        }))} 
+                        aria-label="redo" 
+                        className='redo'
+                        disabled={newStack[lang].length === 0}
+                        style={{color: newStack[lang].length === 0 ? 'gray': 'white'}}
+                    >
                         <RedoIcon />
                     </IconButton>
                 </div>
