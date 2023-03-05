@@ -1,4 +1,5 @@
 import { Button } from "@mui/material";
+import { useEffect } from "react";
 import { useSelector } from 'react-redux'
 import { Link, useNavigate } from "react-router-dom";
 import { v4 } from "uuid";
@@ -21,6 +22,10 @@ export default function Home()
         window.localStorage.setItem('resumeo-data', JSON.stringify(recent));
         window.location.reload();
     }
+
+    useEffect(() => {
+        document.title = "Resumeo";
+    }, [])
 
     return(
         <div id="home">

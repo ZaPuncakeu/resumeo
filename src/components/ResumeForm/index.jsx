@@ -10,14 +10,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { editName, save, scrollImage, write } from '../../slices/resumeSlice';
 import { useParams } from 'react-router-dom';
 import DebounceInput from '../DebounceInput';
+import { useMemo } from 'react';
 export default function ResumeForm()
 {
     const { id } = useParams();
-    
     const {lang, text} = useSelector(state => state.lang);
     const data = useSelector(state => state.resume.data[id]);
     console.log(data);
     const dispatch = useDispatch();
+    useMemo(() => {
+        document.title = data.name + " - Resumeo" 
+    }, [data])
     return (
         <form onSubmit={e => e.preventDefault()} id="form-container">
             <br />
