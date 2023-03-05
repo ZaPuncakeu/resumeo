@@ -10,7 +10,7 @@ export default function CVSkills ({
             <h3>- {text.skills} -</h3>
 
             {
-                data[lang].skills.map((s) => {
+                skills.map((s) => {
                     return <div key={`${s.id}-cv`} className='skills-element'>
                         <span>{s.skill_name}</span>
                         <span>{s.skill_level}</span>
