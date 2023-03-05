@@ -48,6 +48,9 @@ export default function Home()
                                     </div>
                                     <br />
                                     <div className="btn-model">
+                                        {recent[key].name}
+                                        <br />
+                                        <br />
                                         <Link to={`/resume/${key}`} style={{textDecoration: 'none'}}>
                                             <Button variant="outlined">{text.select}</Button>
                                         </Link>

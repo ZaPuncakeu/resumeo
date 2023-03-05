@@ -22,7 +22,8 @@ export default function({data, lang, text}) {
                             backgroundImage: `url(${data[lang].picture.src.length === 0 ? "https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg" : data[lang].picture.src})`,
                             backgroundPositionX: `${data[lang].picture.image_position_x}px`,
                             backgroundPositionY: `${data[lang].picture.image_position_y}px`,
-                            backgroundRepeat: 'no-repeat'
+                            backgroundRepeat: 'no-repeat',
+                            backgroundSize: `${data[lang].picture.src.length === 0 ? 'cover' : data[lang].picture.zoom}px`
                         }}
                     ></div>
                 </div>

@@ -11,15 +11,24 @@ export default function DebounceInput(props)
     const lang = useSelector(state => state.lang.lang);
     const { id } = useParams();
 
+    const [can_save, setCanSave] = useState(true);
+
     function apply(e)
     {
-        clearTimeout(inputTimeout);
-        props.onChange(e);
-        setInputTimeout(setTimeout(() => {
+        console.log(can_save);
+        if(can_save)
+        {
+            setCanSave(false);
             dispatch(save({
                 id,
                 lang
-            }))   
+            })) 
+        }
+
+        clearTimeout(inputTimeout);
+        props.onChange(e);
+        setInputTimeout(setTimeout(() => {
+            setCanSave(true);
         }, props.timer ? props.timer : 500));
     }
 

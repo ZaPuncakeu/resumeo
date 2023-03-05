@@ -8,7 +8,8 @@
             "width": 0,
             "height": 0,
             "image_position_x": 0,
-            "image_position_y": 0
+            "image_position_y": 0,
+            "zoom": 0
         },
         "fullname": "",
         "title": "",
@@ -28,7 +29,8 @@
             "width": 0,
             "height": 0,
             "image_position_x": 0,
-            "image_position_y": 0
+            "image_position_y": 0,
+            "zoom": 0
         },
         "fullname": "",
         "title": "",

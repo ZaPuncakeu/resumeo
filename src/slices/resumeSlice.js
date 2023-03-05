@@ -46,6 +46,7 @@ export const resumeSlice = createSlice({
     },
     scrollImage: (state, action) => {
       state.data[action.payload.id][action.payload.lang].picture[action.payload.direction] = action.payload.value;
+      window.localStorage.setItem('resumeo-data', JSON.stringify(state.data));
     },
     save: (state, action) => {
       state.historyStack[action.payload.lang].push(JSON.stringify({id: action.payload.id, data: state.data[action.payload.id][action.payload.lang]}));
