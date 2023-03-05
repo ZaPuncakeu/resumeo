@@ -4,7 +4,7 @@
     height: 100vh;
     overflow-y: auto;
     box-sizing: border-box;
-    padding: 0 25px;
+    padding: 60px 25px;
     background-color: rgb(255, 255, 255);
     position: fixed;
     top: 0;
@@ -30,15 +30,16 @@
     margin: 15px 0;
 }
 
-#picture {
-    text-align: center;
+#picture > .img-slider {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
 }
 
 .image-input-container 
 {
     width: 150px;
     height: 150px;
-    margin: 15px auto;
     background-size: cover;
     background-position: center;
 }
@@ -74,4 +75,13 @@
 
 .same-line > * {
     width: 45%;
+}
+
+.image-pos-x {
+    width: 150px;
+    margin: auto;
+}
+
+.image-pos-y {
+    height: 150px;
 }

@@ -1,0 +1,34 @@
+#navbar {
+    width: 100%;
+    height: 60px;
+    background-color: #2d2d2d;
+    position: fixed;
+    z-index: 99;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: border-box;
+}
+
+#navbar .back-btn {
+    color: white;
+    border-color: white;
+}
+
+#navbar .undo, #navbar .redo {
+    color: white;
+}
+
+#navbar .right-side {
+    display: flex;
+    gap: 15px;
+}
+
+#navbar .language-website {
+    color: white;
+    border-color: white;
+    padding-left: 15px;
+    padding-right: 15px;
+}

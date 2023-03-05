@@ -2,7 +2,6 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import useModels from '../../hooks/useModels';
 import './CVContainer.css';
-import Model1 from "./models/Model1";
 
 export default function CVContainer()
 {

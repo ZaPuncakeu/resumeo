@@ -4,11 +4,11 @@
     height: 100vh;
     overflow: scroll;
     display: flex;
-    justify-content: center;
-    align-items: center;
     position: fixed;
     right: 0;
     top: 0;
+    padding: 250px;
+    box-sizing: border-box;
     background-color: rgb(217, 217, 217);
 }
 

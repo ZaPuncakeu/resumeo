@@ -38,7 +38,9 @@ export default function Home()
                 <h2>{text.recent}</h2>
                 <div>
                     {
-                        Object.keys(recent).map(key => {
+                        Object.keys(recent).sort((a, b) => {
+                            return new Date(recent[b].opened_at) - new Date(recent[a].opened_at);
+                        }).map(key => {
                             return(
                                 <div key={'recent-'+key}>
                                     <div className='model-container'>

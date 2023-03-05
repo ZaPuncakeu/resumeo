@@ -12,11 +12,17 @@ export const resumeSlice = createSlice({
   },
   reducers: {
     init: (state, action) => {
+      const date = new Date();
       if(!state.data[action.payload.id])
       {
-        state.data[action.payload.id] = default_array;
+        state.data[action.payload.id] = {...default_array, 
+          created_at: JSON.stringify(date),
+        };
+        
+        state.data[action.payload.id].name = "Untitled " + Object.keys(state.data).length;
         window.localStorage.setItem('resumeo-data', JSON.stringify(state.data));
       }
+      state.data[action.payload.id]["opened_at"] = JSON.stringify(date);
     },
     addArray: (state, action) => {
       state.historyStack[action.payload.lang].push(JSON.stringify({id: action.payload.id, data: state.data[action.payload.id][action.payload.lang]}));
@@ -35,9 +41,11 @@ export const resumeSlice = createSlice({
       window.localStorage.setItem('resumeo-data', JSON.stringify(state.data));
     },
     write: (state, action) => {
-      state.data[action.payload.id];
       state.data[action.payload.id][action.payload.lang][action.payload.field] = action.payload.value;
       window.localStorage.setItem('resumeo-data', JSON.stringify(state.data));
+    },
+    scrollImage: (state, action) => {
+      state.data[action.payload.id][action.payload.lang].picture[action.payload.direction] = action.payload.value;
     },
     save: (state, action) => {
       state.historyStack[action.payload.lang].push(JSON.stringify({id: action.payload.id, data: state.data[action.payload.id][action.payload.lang]}));
@@ -61,6 +69,6 @@ export const resumeSlice = createSlice({
   }
 })
 
-export const { write, writeArray, addArray, deleteArray, init, undo, redo, save } = resumeSlice.actions
+export const { write, writeArray, addArray, deleteArray, init, undo, redo, save, scrollImage } = resumeSlice.actions
 
 export default resumeSlice.reducer

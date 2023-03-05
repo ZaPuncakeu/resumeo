@@ -1,5 +1,5 @@
 import './ResumeForm.css';
-import { Button, FormControl, InputLabel, MenuItem, Select } from "@mui/material"
+import { Button, FormControl, InputLabel, MenuItem, Select, Slider } from "@mui/material"
 import Personal from './Personal/Personal';
 import Profile from './Profile/Profile';
 import WorkExperience from './WorkExperience';
@@ -8,9 +8,8 @@ import Skills from './Skills';
 import Langs from './Langs';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeLanguage } from '../../slices/langSlice';
-import { write } from '../../slices/resumeSlice';
+import { scrollImage, write } from '../../slices/resumeSlice';
 import { useParams } from 'react-router-dom';
-import { save } from '../../utils/functions';
 export default function ResumeForm()
 {
     const { id } = useParams();
@@ -21,52 +20,76 @@ export default function ResumeForm()
     const dispatch = useDispatch();
     return (
         <form onSubmit={e => e.preventDefault()} id="form-container">
-            <section className="settings">
-                <h1>{text.settings}</h1>
-                <Button variant="contained">{text.model}</Button>
-                <FormControl id="language-container">
-                    <InputLabel id="language-label">{text.language}</InputLabel>
-                    <Select
-                        labelId="language-label"
-                        label={text.language}
-                        id="language"
-                        onChange={e => dispatch(changeLanguage(e.target.value))}
-                        value={lang}
-                    >
-                        <MenuItem value={'fr'}>{text.fr}</MenuItem>
-                        <MenuItem value={'en'}>{text.en}</MenuItem>
-                    </Select>
-                </FormControl>
-                <Button variant="contained" id="print" onClick={e => window.print()}>{text.print}</Button>
-            </section>
-
-            <hr />
 
             <section id="picture">
                 <h1>{text.upload_picture}</h1>
-                <div 
-                    className='image-input-container'
-                    style={{
-                        backgroundImage: `url(${data[lang].picture})`
-                    }}
-                >
-                    <input 
-                        type="file" 
-                        onChange={e => {
-                            const reader = new FileReader();
-                            reader.onload = () => {
-                                dispatch(write({
-                                    id,
-                                    value: reader.result,
-                                    field: 'picture',
-                                    lang
-                                }))
-                            }
-                            if(e.target.files[0])
-                                reader.readAsDataURL(e.target.files[0]);
+                <br />
+                {
+                    data[lang].picture.src.length === 0 ?
+                    null
+                    :
+                    <div className='image-pos-x'>
+                        <Slider onChange={e => dispatch(scrollImage({
+                            value: e.target.value,
+                            lang,
+                            id,
+                            direction: "image_position_x" 
+                        }))} value={data[lang].picture.image_position_x} aria-label="Default" max={data[lang].picture.width/2} min={-data[lang].picture.width/2}/>
+                    </div>
+                }
+                <div className='img-slider'>
+                    {
+                        data[lang].picture.src.length === 0 ?
+                        null
+                        :
+                        <div className='image-pos-y'>
+                            <Slider orientation='vertical' onChange={e => dispatch(scrollImage({
+                                        value: e.target.value,
+                                        lang,
+                                        id,
+                                        direction: "image_position_y" 
+                                    }))} value={data[lang].picture.image_position_y} aria-label="Default" max={data[lang].picture.height/2} min={-data[lang].picture.height/2} />
+                        </div>
+                    }
+                    <div 
+                        className='image-input-container'
+                        style={{
+                            backgroundImage: `url(${data[lang].picture.src.length === 0 ? "https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg" : data[lang].picture.src})`,
+                            backgroundPositionX: `${data[lang].picture.image_position_x}px`,
+                            backgroundPositionY: `${data[lang].picture.image_position_y}px`,
+                            backgroundRepeat: 'no-repeat'
                         }}
-                    />
+                    >
+                        <input 
+                            type="file" 
+                            onChange={e => {
+                                const reader = new FileReader();
+                                reader.onload = () => {
+                                    var img = new Image();
+                                    img.src = reader.result;
+                                    img.onload = () => {
+                                        dispatch(write({
+                                            id,
+                                            value: {
+                                                src: reader.result,
+                                                width: img.width,
+                                                height: img.height,
+                                                image_position_x: 0,
+                                                image_position_y: 0
+                                            },
+                                            field: 'picture',
+                                            lang
+                                        }))
+                                    }
+                                    
+                                }
+                                if(e.target.files[0])
+                                    reader.readAsDataURL(e.target.files[0]);
+                            }}
+                        />
+                    </div>
                 </div>
+                
             </section>
 
             <hr />
@@ -93,8 +116,6 @@ export default function ResumeForm()
 
             <Langs />
             
-            <Button variant="contained" onClick={e => save("save")}>{text.save}</Button>
-            <br /><br />
         </form>
     )
 }

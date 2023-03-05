@@ -1,4 +1,6 @@
 import { writeArray as write, addArray as add, deleteArray as del } from "../slices/resumeSlice";
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 export function updateArrayData(array, value, field, position, lang, id, dispatch) {
     dispatch(write({
@@ -39,10 +41,24 @@ const makeTextFile = (text) => {
     return window.URL.createObjectURL(data);
 };
 
-export function save(name)
+export function save(id, lang)
 {
     const a = document.createElement('a');
-    a.href = makeTextFile(window.localStorage.getItem('resumeo-data'));
-    a.download = name
+    const data = JSON.parse(window.localStorage.getItem('resumeo-data'))
+    a.href = makeTextFile(JSON.stringify(data[id][lang]));
+    a.download = data[id].name;
     a.click();
 }
+
+/* _exportPdf = () => {
+
+     html2canvas(document.querySelector("#capture")).then(canvas => {
+        document.body.appendChild(canvas);  // if you want see your screenshot in body.
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF();
+        pdf.addImage(imgData, 'PNG', 0, 0);
+        pdf.save("download.pdf"); 
+    });
+
+ }
+*/

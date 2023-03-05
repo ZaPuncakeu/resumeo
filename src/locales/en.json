@@ -39,5 +39,8 @@
     "none": "None",
     "print": "Print",
     "save": "Save",
-    "select": "Select"
+    "select": "Select",
+    "back_home": "Back to home",
+    "download": "Download",
+    "upload": "Upload"
 }

@@ -3,10 +3,17 @@
     "id": "",
     "model": 0,
     "en": {
-        "picture": "https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg",
+        "picture": {
+            "src": "",
+            "width": 0,
+            "height": 0,
+            "image_position_x": 0,
+            "image_position_y": 0
+        },
         "fullname": "",
         "title": "",
         "email": "",
+        "profile": "",
         "phone": "",
         "address": "",
         "description": "",
@@ -16,9 +23,16 @@
         "langs": []
     },
     "fr": {
-        "picture": "https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg",
+        "picture": {
+            "src": "",
+            "width": 0,
+            "height": 0,
+            "image_position_x": 0,
+            "image_position_y": 0
+        },
         "fullname": "",
         "title": "",
+        "profile": "",
         "email": "",
         "phone": "",
         "address": "",

@@ -5,6 +5,7 @@ import CVContainer from '../components/CVContainer'
 import { useParams } from "react-router-dom";
 import { init, redo, undo } from "../slices/resumeSlice";
 import { CircularProgress } from "@mui/material";
+import Navbar from "../components/CVContainer/Navbar";
 export default function Resume()
 {
     let { id } = useParams();
@@ -40,6 +41,7 @@ export default function Resume()
                     <CircularProgress/>
                 :
                 <>
+                    <Navbar/>
                     <ResumeForm/>
                     <CVContainer/>
                 </>
