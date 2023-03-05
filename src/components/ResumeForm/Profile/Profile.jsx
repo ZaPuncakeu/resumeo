@@ -20,7 +20,7 @@ export default function Profile()
                 className='input' 
                 label={text.description} 
                 variant="outlined" 
-                defaultValue={data[lang].profile}
+                value={data[lang].profile}
                 onChange={e => dispatch(write({
                     lang,
                     field: 'profile',

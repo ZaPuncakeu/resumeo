@@ -18,7 +18,7 @@ export default function Personal()
                 className='input' 
                 label={text.fullname} 
                 variant="filled" 
-                defaultValue={data[lang].fullname}
+                value={data[lang].fullname}
                 onChange={e => dispatch(write({
                     lang,
                     field: 'fullname',
@@ -33,7 +33,7 @@ export default function Personal()
                 className='input' 
                 label={text.title} 
                 variant="filled" 
-                defaultValue={data[lang].title}
+                value={data[lang].title}
                 onChange={e => dispatch(write({
                     lang,
                     field: 'title',
@@ -48,7 +48,7 @@ export default function Personal()
                 className='input' 
                 label={text.email} 
                 variant="filled" 
-                defaultValue={data[lang].email}
+                value={data[lang].email}
                 onChange={e => dispatch(write({
                     lang,
                     field: 'email',
@@ -63,7 +63,7 @@ export default function Personal()
                 className='input' 
                 label={text.phone} 
                 variant="filled" 
-                defaultValue={data[lang].phone}
+                value={data[lang].phone}
                 onChange={e => dispatch(write({
                     lang,
                     field: 'phone',
@@ -78,7 +78,7 @@ export default function Personal()
                 className='input' 
                 label={text.address} 
                 variant="filled" 
-                defaultValue={data[lang].address}
+                value={data[lang].address}
                 onChange={e => dispatch(write({
                     lang,
                     field: 'address',

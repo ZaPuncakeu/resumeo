@@ -42,5 +42,6 @@
     "select": "Sélectionner",
     "back_home": "Retour à l'accueil",
     "download": "Télécharger",
-    "upload": "Importer"
+    "upload": "Importer",
+    "document_name": "Nom du document"
 }

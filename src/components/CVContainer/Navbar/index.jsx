@@ -1,6 +1,6 @@
 import './style.css';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { Button, FormControl, IconButton, InputLabel, MenuItem, Select } from '@mui/material';
+import { Button, IconButton, MenuItem, Select } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import UndoIcon from '@mui/icons-material/Undo';
@@ -9,9 +9,11 @@ import DownloadIcon from '@mui/icons-material/Download';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 import SaveIcon from '@mui/icons-material/Save';
 import LocalPrintshopIcon from '@mui/icons-material/LocalPrintshop';
-import { save } from '../../../utils/functions';
+import { save, downloadPDF } from '../../../utils/functions';
 import { changeLanguage } from '../../../slices/langSlice';
-import { redo, undo } from '../../../slices/resumeSlice';
+import { redo, undo, upload } from '../../../slices/resumeSlice';
+import CVContainer from '..';
+import html2canvas from 'html2canvas';
 
 export default function Navbar()
 {
@@ -19,6 +21,25 @@ export default function Navbar()
     
     const dispatch = useDispatch();
     const { id } = useParams();
+    const data = useSelector(state => state.resume.data);
+
+    function download()
+    {
+        downloadPDF(data[id].name, lang);
+    }
+
+    function uploadFile(e) {
+        const reader = new FileReader();
+        reader.onload = () => {
+            dispatch(upload({
+                id,
+                lang,
+                data: JSON.parse(reader.result)
+            }))
+        }
+        if(!e.target.files[0]) return;
+        reader.readAsText(e.target.files[0]);
+    }
 
     return(
         <div id="navbar">
@@ -57,15 +78,16 @@ export default function Navbar()
                     <MenuItem value={'en'}>{text.en}</MenuItem>
                 </Select>
 
-                <Button variant='outlined' color="primary" startIcon={<FileUploadIcon />} >
+                <Button variant="outlined" component="label" startIcon={<FileUploadIcon />}>
                     {text.upload}
+                    <input onChange={uploadFile} hidden type="file" />
                 </Button>
-
+                
                 <Button onClick={e => save(id, lang)} variant='outlined' className='back-btn' startIcon={<SaveIcon />} >
                     {text.save}
                 </Button>
 
-                <Button variant='contained' color="primary" startIcon={<DownloadIcon />} >
+                <Button variant='contained' color="primary" startIcon={<DownloadIcon />} onClick={e => download()} >
                     {text.download}
                 </Button>
 

@@ -33,6 +33,7 @@ export default function Langs()
                             text={text} 
                             lang={lang} 
                             i={i}
+                            size={data[lang].langs.length}
                         />
                     )
                 })

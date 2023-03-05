@@ -11,6 +11,13 @@ export default function DebounceInput(props)
     const lang = useSelector(state => state.lang.lang);
     const { id } = useParams();
 
+    function preventEvent(e)
+    {   
+        if (e.ctrlKey && (e.key === 'z' || e.key == 'y')) {
+            e.preventDefault();
+        }
+    }
+
     const [can_save, setCanSave] = useState(true);
 
     function apply(e)
@@ -36,6 +43,7 @@ export default function DebounceInput(props)
         <TextField
             {...props}
             onChange={apply}
+            onKeyDown={preventEvent}
         />
     )
 }

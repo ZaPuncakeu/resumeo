@@ -33,6 +33,7 @@ export default function Skills()
                             text={text} 
                             lang={lang} 
                             i={i}
+                            size={data[lang].skills.length}
                         />
                     )
                 })

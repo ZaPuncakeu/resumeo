@@ -1,5 +1,5 @@
 import './ResumeForm.css';
-import { Button, FormControl, InputLabel, MenuItem, Select, Slider } from "@mui/material"
+import { Slider } from "@mui/material"
 import Personal from './Personal/Personal';
 import Profile from './Profile/Profile';
 import WorkExperience from './WorkExperience';
@@ -7,9 +7,9 @@ import Education from './Education';
 import Skills from './Skills';
 import Langs from './Langs';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeLanguage } from '../../slices/langSlice';
-import { save, scrollImage, write } from '../../slices/resumeSlice';
+import { editName, save, scrollImage, write } from '../../slices/resumeSlice';
 import { useParams } from 'react-router-dom';
+import DebounceInput from '../DebounceInput';
 export default function ResumeForm()
 {
     const { id } = useParams();
@@ -20,6 +20,18 @@ export default function ResumeForm()
     const dispatch = useDispatch();
     return (
         <form onSubmit={e => e.preventDefault()} id="form-container">
+            <br />
+            <DebounceInput 
+                className='input' 
+                label={text.document_name} 
+                variant="outlined" 
+                value={data.name}
+                onChange={e => dispatch(editName({
+                    lang,
+                    value: e.target.value,
+                    id
+                }))}
+            />
 
             <section id="picture">
                 <h1>{text.upload_picture}</h1>

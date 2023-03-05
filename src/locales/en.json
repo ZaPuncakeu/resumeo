@@ -42,5 +42,6 @@
     "select": "Select",
     "back_home": "Back to home",
     "download": "Download",
-    "upload": "Upload"
+    "upload": "Upload",
+    "document_name": "Document name"
 }

@@ -28,7 +28,7 @@ export default function Education()
             {
                 data[lang].education.map((education, i) => {
                     return(
-                        <EducationItem key={education.id} education={education} text={text} lang={lang} i={i}/>
+                        <EducationItem size={data[lang].education.length} key={education.id} education={education} text={text} lang={lang} i={i}/>
                     )
                 })
             }

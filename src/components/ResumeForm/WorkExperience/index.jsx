@@ -28,7 +28,14 @@ export default function WorkExperience()
             {
                 data[lang].work_experience.map((work_exp, i) => {
                     return(
-                        <Work key={work_exp.id} work_exp={work_exp} text={text} lang={lang} i={i}/>
+                        <Work 
+                            key={work_exp.id} 
+                            work_exp={work_exp} 
+                            text={text} 
+                            lang={lang} 
+                            i={i}
+                            size={data[lang].work_experience.length}
+                        />
                     )
                 })
             }
