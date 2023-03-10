@@ -15,13 +15,17 @@
     "@mui/material": "^5.11.9",
     "@react-pdf/renderer": "^3.1.6",
     "@reduxjs/toolkit": "^1.9.3",
+    "dom-to-image": "^2.6.0",
+    "dom-to-image-more": "^2.15.0",
     "dom-to-svg": "^0.12.2",
     "html2canvas": "^1.4.1",
+    "htmlsvg": "^1.2.3",
     "jspdf": "^2.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.8.1",
+    "svg-to-pdfkit": "^0.1.8",
     "uuid": "^9.0.0"
   },
   "devDependencies": {

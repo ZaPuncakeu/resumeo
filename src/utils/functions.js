@@ -1,6 +1,8 @@
 import { writeArray as write, addArray as add, deleteArray as del } from "../slices/resumeSlice";
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import domtoimage from 'dom-to-image-more';
+import htmlToSvg from "htmlsvg";
 
 export function updateArrayData(array, value, field, position, lang, id, dispatch) {
     dispatch(write({
@@ -47,11 +49,18 @@ export function save(id, lang)
     a.click();
 }
 
-export function downloadPDF(name, lang) 
+const svgConfig = {
+    downloadSvg: true,
+    downloadPng: true,
+    convertDataUrl: true, // you need to convert images to dataurl if you wanna download png image
+    filename: "htmltosvg",
+};
+
+export async function downloadPDF(name, lang) 
 {
     const input = document.querySelector("#cv-container > div");
 
-    let pdf = new jsPDF('p', 'mm', 'a4');
+    /*let pdf = new jsPDF('p', 'mm', 'a4');
     let pWidth = pdf.internal.pageSize.width; 
     let srcWidth = input.scrollWidth;
     let margin = 0; 
@@ -65,5 +74,32 @@ export function downloadPDF(name, lang)
         callback: function () {
             pdf.save(name+"-"+lang)
         }
-    });
+    });*/
+
+    /*const svg = await htmlToSvg(input, svgConfig);
+    console.log(svg);
+    */
+
+    input.style.zoom = "100%";
+    console.log(input);
+    domtoimage.toSvg(input, { quality: 0.95, width: 800, height: 1120 })
+    .then(function (dataUrl) {
+        const link = document.createElement('a');
+        link.download = 'my-image-name.svg';
+        link.href = dataUrl;
+        link.click();
+        console.log(dataUrl);
+    })
+    
+    /*html2canvas(input).then((canvas) => {
+        console.log(canvas);
+        //document.body.innerHTML = "";
+        //document.body.appendChild(canvas);
+        var imgData = canvas.toDataURL(
+            'image/png');              
+        var doc = new jsPDF('p', 'mm');
+        doc.addImage(imgData, 'PNG', 0, 0);
+        doc.save('sample-file.pdf');
+    });*/
 }
+
