@@ -14,7 +14,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 export default function Desktop({
     download,
-    uploadFile
+    uploadFile,
+    loading
 })
 {
     const dispatch = useDispatch();
@@ -80,7 +81,7 @@ export default function Desktop({
                     {text.save}
                 </Button>
 
-                <Button variant='contained' color="primary" startIcon={<DownloadIcon />} onClick={e => download()} >
+                <Button disabled={loading} variant='contained' color="primary" startIcon={<DownloadIcon />} onClick={e => download()} >
                     {text.download}
                 </Button>
 

@@ -9,6 +9,7 @@ import { upload } from '../../../slices/resumeSlice';
 import { useWindowSize } from '../../../hooks/useWindowSize';
 import Desktop from './Desktop';
 import Mobile from './Mobile';
+import { useState } from 'react';
 
 export default function Navbar()
 {
@@ -19,10 +20,13 @@ export default function Navbar()
     const {data} = useSelector(state => state.resume);
 
     const {lang} = useSelector(state => state.lang);
+    const [loading, setLoading] = useState(false);
 
     function download()
     {
-        downloadPDF(data[id].name, lang);
+        setLoading(true);
+        downloadPDF(data[id].name, lang)
+        .then(() => setLoading(false));
     }
 
     function uploadFile(e) {
@@ -44,9 +48,9 @@ export default function Navbar()
         <div id="navbar">
             {
                 width >= 860 ?
-                <Desktop download={download} uploadFile={uploadFile} />
+                <Desktop loading={loading} download={download} uploadFile={uploadFile} />
                 :
-                <Mobile download={download} uploadFile={uploadFile} />
+                <Mobile loading={loading} download={download} uploadFile={uploadFile} />
             }
         </div>
     )
