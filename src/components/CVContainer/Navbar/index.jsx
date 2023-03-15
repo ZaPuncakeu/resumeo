@@ -18,6 +18,7 @@ import html2canvas from 'html2canvas';
 export default function Navbar()
 {
     const {text, lang} = useSelector(state => state.lang);
+    const [loading, setLoading] = useState(false);
     
     const dispatch = useDispatch();
     const { id } = useParams();
