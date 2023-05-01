@@ -1,6 +1,5 @@
 #cv-container 
 {
-    width: 60%;
     height: 100vh;
     overflow: scroll;
     display: flex;
@@ -10,6 +9,14 @@
     padding: 250px;
     box-sizing: border-box;
     background-color: rgb(217, 217, 217);
+}
+
+.cv-container-mobile {
+    width: 100%;
+}
+
+.cv-container-desktop {
+    width: 60%;
 }
 
 #cv-container > div {

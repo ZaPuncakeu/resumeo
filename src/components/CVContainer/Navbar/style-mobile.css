@@ -1,0 +1,25 @@
+.menu-btn {
+    font-size: 1.5rem;
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.menu {
+    width: 250px;
+    height: 100vh;
+    background-color: #2d2d2d;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    padding-top: 85px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-btns {
+    width: 90%;  
+}
