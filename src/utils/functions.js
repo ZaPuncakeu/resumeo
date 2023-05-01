@@ -52,7 +52,7 @@ export function downloadPDF(name, lang, setLoading) {
         const input = document.querySelector("#cv-container > div");
         const result = createPDFDocument(loopThroughRoots(input));
         
-        const res = await axios.post(`${configProject.endpoint_url}/generate-pdf`, {
+        const res = await axios.post(`${configProject.endpoint_url}/pdf/generate`, {
             name: `${name}-${lang}`,
             html: result.outerHTML
         });

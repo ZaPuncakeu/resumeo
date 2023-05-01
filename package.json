@@ -18,6 +18,7 @@
     "dom-to-image": "^2.6.0",
     "dom-to-image-more": "^2.15.0",
     "dom-to-svg": "^0.12.2",
+    "framer-motion": "^10.12.4",
     "html2canvas": "^1.4.1",
     "htmlsvg": "^1.2.3",
     "jspdf": "^2.5.1",
@@ -25,6 +26,7 @@
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.8.1",
+    "redaxios": "^0.5.1",
     "svg-to-pdfkit": "^0.1.8",
     "uuid": "^9.0.0"
   },

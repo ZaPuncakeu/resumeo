@@ -9,7 +9,7 @@ import { upload } from '../../../slices/resumeSlice';
 import { useWindowSize } from '../../../hooks/useWindowSize';
 import Desktop from './Desktop';
 import Mobile from './Mobile';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Navbar()
 {
@@ -43,6 +43,20 @@ export default function Navbar()
     }
 
     const { width } = useWindowSize();
+
+    useEffect(() => {
+        console.log("mobile...");
+        const element = document.getElementById('cv-container');
+        const elementRect = element.getBoundingClientRect();
+
+        const absoluteElementTop = elementRect.top + window.pageYOffset;
+        const middleY = absoluteElementTop - (window.innerHeight / 2);
+        
+        const absoluteElementWidth = elementRect.left + window.pageXOffset;
+        const middleX = absoluteElementWidth - (window.innerWidth / 2);
+        console.log(middleX, middleY);
+        window.scrollTo(middleX, middleY);
+    }, [width]);
 
     return(
         <div id="navbar">
